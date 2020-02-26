@@ -1,4 +1,4 @@
-# notifier
+# CS 6460
 
 ## Project setup
 ```
