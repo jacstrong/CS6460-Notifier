@@ -1,4 +1,14 @@
-# CS 6460
+# CS 6460 Notifier
+
+## Environment Setup
+
+#### node.js
+
+I prefer to use NVM so that you can change versions easily.
+
+#### Python 2.7
+
+I think that node uses this for GYP in the build process.
 
 ## Project setup
 ```
@@ -19,6 +29,6 @@ yarn build
 ```
 yarn lint
 ```
+## Vuetify
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+I am using a component library. Most of the <v-....> elements are from vuetify. https://vuetifyjs.com
