@@ -5,6 +5,7 @@
       wrap
       align="center"
       justify="center"
+      class="mt-12"
     >
       <v-flex xs8>
         <v-card
@@ -71,7 +72,8 @@
                   color="grey lighten-2"
                   @click.stop="dialog = true"
                 >
-                  Advanced
+                  Learn More
+                  <!-- yes -->
                 </v-btn>
               </v-flex>
               <v-flex xs6 pl-1 pr-5>
@@ -94,12 +96,11 @@
       max-width="600"
     >
       <v-card tile>
-        <v-card-title class="headline">Help me make a decision.</v-card-title>
+        <v-card-title class="headline">Why do you want to ignore the warning?</v-card-title>
 
         <v-card-text>
           <v-btn
-            color="red darken-1"
-            text
+            color="blue lighten-3"
             @click="understandDialog = true"
           >
             I do not understand this warning
@@ -108,24 +109,22 @@
 
         <v-card-text>
           <v-btn
-            color="red darken-1"
-            text
-            @click="dialog = false"
+            color="blue lighten-3"
+            @click="beforeDialog = true"
           >
-            I have used this type of app befor without any problem
+            I have used this type of app before
           </v-btn>
         </v-card-text>
         <v-card-text>
           <v-btn
-            color="red darken-1"
-            text
-            @click="dialog = false"
+            color="blue lighten-3"
+            @click="harmDialog = true"
           >
-            I do not think this app would do any harm to my computer
+            I do not think this app will harm my computer
           </v-btn>
         </v-card-text>
 
-        <v-card-actions>
+        <!-- <v-card-actions>
           <v-spacer></v-spacer>
 
 
@@ -133,6 +132,47 @@
             color="green darken-1"
             
             @click="dialog = false"
+          >
+            Back To Safety
+          </v-btn>
+        </v-card-actions> -->
+      </v-card>
+    </v-dialog>
+    <v-dialog
+      v-model="understandDialog"
+      max-width="600"
+    >
+      <v-card tile
+      >
+        <!-- <v-card-title class="headline">I do not understand</v-card-title> -->
+        <v-card-title class="headline"></v-card-title>
+        <v-card-text>
+          <v-img src="../assets/bad-guy.png" />
+        </v-card-text>
+        <v-card-text class="body-1 black--text">
+          YoutubeDownloader.exe is not sourced from a verified Microsoft partner.
+          Think of a stranger <strong>(the untrusted app)</strong> trying to gain access to your house
+          <strong>(your computer)</strong>.
+          Would you prefer handing over the key 
+          <strong>(allow permission to access your computer)</strong>
+          or stop him right away <strong>(block permission)</strong>?
+        </v-card-text>
+
+        <v-card-actions>
+
+
+          <v-btn
+            color="red darken-1 white--text"
+            @click="understandDialog = false; dialog = false;"
+          >
+            Understand Risk and Proceed
+          </v-btn>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="green darken-1  white--text"
+            
+            @click="understandDialog = false; dialog = false;"
           >
             Back To Safety
           </v-btn>
@@ -140,35 +180,80 @@
       </v-card>
     </v-dialog>
     <v-dialog
-      v-model="understandDialog"
-      fullscreen
+      v-model="beforeDialog"
+      max-width="600"
     >
-      <!-- max-width="600" -->
-      <v-card tile>
-        <v-img src="../assets/bad-guy.png">
-        </v-img>
-        <v-card-title class="headline">I do not understand</v-card-title>
+      <v-card tile
+      >
+        <v-card-title class="headline"></v-card-title>
+        <v-card-text>
+          <v-img src="../assets/malware.jpg" />
+        </v-card-text>
+
+        <v-card-text class="body-1 black--text">
+          Familiarity with certain types of apps does not necessarily mean that all of them are safe.
+          <strong>Hackers often inject malicious software into familiar tools</strong> to steal information.
+          <!-- The cost of cybercrime has reached more than $2 trillion. -->
+          On average a cybercrime incident costs $2,500.
+        </v-card-text>
+        <!-- <v-card-text>
+          Just because you have used this type of app before does not guarantee that the one you are currently trying to install is malware free.
+          Always ensure that you completely trust the source of the app.
+        </v-card-text> -->
+
+        <v-card-actions>
+          <v-btn
+            color="red darken-1 white--text"
+            @click="beforeDialog = false; dialog = false;"
+          >
+            Understand Risk and Proceed
+          </v-btn>
+          <v-spacer></v-spacer>
+
+          <v-btn
+            color="green darken-1 white--text"
+            
+            @click="beforeDialog = false; dialog = false;"
+          >
+            Back To Safety
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-dialog
+      v-model="harmDialog"
+      max-width="600"
+    >
+      <v-card tile
+      >
+        <v-card-title class="headline"></v-card-title>
 
         <v-card-text>
-          Think of a stranger <strong class="red--text">(the untrusted app)</strong> trying to gain access to your house
-          <strong class="red--text">(your device)</strong>.
-          Would you prefer handing over the key (allow permission to make changes to your device - 
-          <a class="black--text" @click="understandDialog = false; dialog = false">Proceed Anyway</a>)
-          or 
-          stop him right away (block permission - <a class="black--text" @click="understandDialog = false; dialog = false">Back to Safety</a>)?          
+          <v-img src="../assets/confusion.png" />
+        </v-card-text>
+
+
+        <v-card-text class="body-1 black--text">
+          There is a high likelyhood that apps installed from third parties will harm your computer since
+          <strong>cyber-attacks occur every 39 seconds.</strong> 
+          If you succumb to a cyber-attack you could lose <strong>personal data</strong>, or have your <strong>financial information stolen.</strong>
         </v-card-text>
 
         <v-card-actions>
+          <v-btn
+            color="red darken-1 white--text"
+            @click="harmDialog = false; dialog = false;"
+          >
+            Understand Risks and Proceed
+          </v-btn>
           <v-spacer></v-spacer>
 
-
-          <!-- <v-btn
-            color="green darken-1"
-            
-            @click="understandDialog = false"
+          <v-btn
+            color="green darken-1 white--text"
+            @click="harmDialog = false; dialog = false;"
           >
             Back To Safety
-          </v-btn> -->
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -188,6 +273,8 @@ export default {
   data: () => ({
     dialog: false,
     understandDialog: false,
+    beforeDialog: false,
+    harmDialog: false,
     icons: {mdiClose}
   })
 }
