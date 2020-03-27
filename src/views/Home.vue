@@ -70,10 +70,10 @@
                   block
                   elevation="0"
                   color="grey lighten-2"
-                  @click.stop="dialog = true"
                 >
-                  Learn More
-                  <!-- yes -->
+                  <!-- @click.stop="dialog = true" -->
+                  <!-- Learn More -->
+                  Yes
                 </v-btn>
               </v-flex>
               <v-flex xs6 pl-1 pr-5>
@@ -244,7 +244,7 @@
             color="red darken-1 white--text"
             @click="harmDialog = false; dialog = false;"
           >
-            Understand Risks and Proceed
+            Understand Risk and Proceed
           </v-btn>
           <v-spacer></v-spacer>
 
